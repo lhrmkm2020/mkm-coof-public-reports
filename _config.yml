@@ -1,0 +1,5 @@
+defaults:
+  - scope:
+      path: "4wjff3"
+    values:
+      layout: "mkm-report-edit"

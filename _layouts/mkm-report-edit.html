@@ -7,17 +7,20 @@ layout: default
 {% if report.size == 6 and filename == 'index.md' %}
 {% assign base = '/' | relative_url %}
 <link rel="stylesheet" href="{{ '/assets/mkm-pages-edit.css' | relative_url }}">
-<div id="mkm-pages-editor" data-brand="coof" data-id="{{ report | escape }}" data-repo="lhrmkm2020/mkm-coof-public-reports" data-origin="https://ads-analytics-799342785986.asia-northeast3.run.app" data-latest="{{ base | append: report | append: '/' | escape }}">
+<link rel="stylesheet" href="{{ '/assets/mkm-report-layout.css' | relative_url }}">
+<div id="mkm-pages-editor" data-brand="{{ site.mkm_report.brand | escape }}" data-id="{{ report | escape }}" data-repo="{{ site.mkm_report.repository | escape }}" data-origin="{{ site.mkm_report.app_origin | escape }}" data-latest="{{ base | append: report | append: '/' | escape }}">
  <nav class="mkm-share-editor-bar" aria-label="문서 작업">
   <button type="button" data-edit>최신본 편집</button>
   <button type="button" data-save hidden disabled>공개 수정본 저장</button>
   <button type="button" data-close hidden>공개본 보기</button>
+  <div data-sections aria-label="리포트 목차" hidden></div>
   <span data-status role="status"></span>
  </nav>
  <div class="mkm-share-form" data-editor hidden><div data-blocks></div></div>
  <div data-view>{{ content }}</div>
 </div>
 <script type="module" src="{{ '/assets/mkm-pages-edit.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/mkm-report-layout.js' | relative_url }}"></script>
 {% else %}
 {{ content }}
 {% endif %}

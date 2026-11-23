@@ -1,3 +1,7 @@
+mkm_report:
+  brand: "coof"
+  repository: "lhrmkm2020/mkm-coof-public-reports"
+  app_origin: "https://ads-analytics-799342785986.asia-northeast3.run.app"
 defaults:
   - scope:
       path: ""

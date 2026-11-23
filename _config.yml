@@ -1,5 +1,6 @@
 defaults:
   - scope:
-      path: "4wjff3"
+      path: ""
+      type: "pages"
     values:
       layout: "mkm-report-edit"

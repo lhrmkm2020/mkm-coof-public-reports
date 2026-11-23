@@ -1,7 +1,23 @@
 ---
 layout: default
 ---
-<nav aria-label="문서 작업" style="margin-bottom:1rem">
-  <a class="btn" href="https://ads-analytics-799342785986.asia-northeast3.run.app/?brand=coof&amp;tab=notice&amp;platform=ALL&amp;report_view=github&amp;share=4wjff3">MKM에서 최신본 편집</a>
-</nav>
+{% assign report_path = page.path | split: '/' %}
+{% assign report = report_path | first %}
+{% assign filename = report_path | last %}
+{% if report.size == 6 and filename == 'index.md' %}
+{% assign base = '/' | relative_url %}
+<link rel="stylesheet" href="{{ '/assets/mkm-pages-edit.css' | relative_url }}">
+<div id="mkm-pages-editor" data-brand="coof" data-id="{{ report | escape }}" data-repo="lhrmkm2020/mkm-coof-public-reports" data-origin="https://ads-analytics-799342785986.asia-northeast3.run.app" data-latest="{{ base | append: report | append: '/' | escape }}">
+ <nav class="mkm-share-editor-bar" aria-label="문서 작업">
+  <button type="button" data-edit>최신본 편집</button>
+  <button type="button" data-save hidden disabled>공개 수정본 저장</button>
+  <button type="button" data-close hidden>공개본 보기</button>
+  <span data-status role="status"></span>
+ </nav>
+ <div class="mkm-share-form" data-editor hidden><div data-blocks></div></div>
+ <div data-view>{{ content }}</div>
+</div>
+<script type="module" src="{{ '/assets/mkm-pages-edit.js' | relative_url }}"></script>
+{% else %}
 {{ content }}
+{% endif %}
